@@ -342,6 +342,11 @@
             <artifactId>lwjgl-zstd</artifactId>
             <classifier>${lwjgl.natives}</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-jogamp</artifactId>
+            <classifier>${lwjgl.natives}</classifier>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.joml/joml -->
         <dependency>
             <groupId>org.joml</groupId>

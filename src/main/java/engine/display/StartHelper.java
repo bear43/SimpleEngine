@@ -4,6 +4,8 @@ import engine.io.KeyboardEvent;
 import engine.io.MouseCursorEvent;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL40;
 import org.lwjgl.system.MemoryUtil;
 
 import java.awt.*;
@@ -23,6 +25,7 @@ public class StartHelper {
         pWindow = GLFW.glfwCreateWindow(WIDTH, HEIGHT, title, MemoryUtil.NULL, MemoryUtil.NULL);
         return pWindow;
     }
+
     public static void run() {
         if(!GLFW.glfwInit()) throw new RuntimeException("Cannot start GLFW");
         createWindowInstance();
@@ -31,6 +34,8 @@ public class StartHelper {
         GLFW.glfwSetCursorPosCallback(pWindow, new MouseCursorEvent());
         GLFW.glfwSetWindowSizeCallback(pWindow, new WindowEvent());
         GL.createCapabilities();
+        //GL40.glEnable(GL11.GL_DEPTH_TEST);
+        //GL40.glEnable(GL11.GL_CULL_FACE);
         GLFW.glfwShowWindow(pWindow);
     }
 

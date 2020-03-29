@@ -2,7 +2,6 @@ package engine.model;
 
 import engine.buffer.VertexArrayObject;
 import engine.math.ITransformable;
-import engine.shader.ShaderProgram;
 import lombok.Data;
 import org.joml.Matrix4f;
 

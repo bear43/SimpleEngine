@@ -11,11 +11,17 @@ import static org.lwjgl.opengl.GL40.*;
 
 @Data
 public abstract class ShaderProgram implements ICleanable {
+
+    protected final String TRANSFORMATION_MATRIX = "transformationMatrix";
+    protected final String PROJECTION_MATRIX = "projectionMatrix";
+    protected final String VIEW_MATRIX = "viewMatrix";
+
     protected int id;
     protected Shader vertexShader;
     protected Shader fragmentShader;
     protected int transformationMatrixLocation;
-    protected final String TRANSFORMATION_MATRIX = "transformationMatrix";
+    protected int projectionMatrixLocation;
+    protected int viewMatrixLocation;
 
     public ShaderProgram() {}
 
@@ -52,6 +58,8 @@ public abstract class ShaderProgram implements ICleanable {
 
     protected void getUniformLocations() {
         transformationMatrixLocation = getUniformLocation(TRANSFORMATION_MATRIX);
+        projectionMatrixLocation = getUniformLocation(PROJECTION_MATRIX);
+        viewMatrixLocation = getUniformLocation(VIEW_MATRIX);
     }
 
     public int getUniformLocation(String uniformName) {
@@ -84,6 +92,14 @@ public abstract class ShaderProgram implements ICleanable {
 
     public void applyTransformation(ITransformable transformable) {
         loadMatrix4f(transformationMatrixLocation, false, transformable.getTransformation());
+    }
+
+    public void applyProjectionMatrix(Matrix4f projectionMatrix) {
+        loadMatrix4f(projectionMatrixLocation, false, projectionMatrix);
+    }
+
+    public void applyViewMatrix(Matrix4f viewMatrix) {
+        loadMatrix4f(viewMatrixLocation, false, viewMatrix);
     }
 
     @Override

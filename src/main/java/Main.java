@@ -4,6 +4,8 @@ import engine.display.StartHelper;
 import engine.model.RawModel;
 import engine.shader.ShaderProgram;
 import engine.shader.StaticShader;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 
 import static org.lwjgl.opengl.GL40.*;
@@ -36,6 +38,7 @@ public class Main {
     public static void render() {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        triangleModel.getTransformation().rotate(0.01f, 0.0f, 1.0f, 0.0f);
         staticShader.applyTransformation(triangleModel);
         triangleModel.draw();
     }
@@ -45,6 +48,19 @@ public class Main {
         triangleModel = Loader.createModel("triangle", triangle, 4, indices, texCoords);
         staticShader = new StaticShader();
         staticShader.link();
+        Matrix4f projectionMatrix = new Matrix4f().setPerspective(90.0f, 1024.0f/768.0f, 0.5f, -100f);
+        Matrix4f viewMatrix = new Matrix4f().setLookAt(0.0f, 0.00f, 1f, 0.0f, 0.0f, -0.0f, 0.0f, 0.1f, 0.0f);
+        /*Matrix4f.projViewFromRectangle(
+                new Vector3f(0.0f, 0.0f, 0.25f),
+                new Vector3f(-0.25f, -0.25f, 0.15f),
+                new Vector3f(0.125f, 0.0f, 0.0f),
+                new Vector3f(0.0f, 0.125f, 0.0f),
+                0.25f, false,
+                projectionMatrix,
+                viewMatrix
+                );*/
+        staticShader.applyViewMatrix(viewMatrix);
+        staticShader.applyProjectionMatrix(projectionMatrix);
         while(!GLFW.glfwWindowShouldClose(StartHelper.getpWindow())) {
             staticShader.use();
             render();
