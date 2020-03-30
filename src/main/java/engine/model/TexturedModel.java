@@ -1,6 +1,8 @@
 package engine.model;
 
+import engine.MemoryManager;
 import engine.buffer.VertexArrayObject;
+import engine.texture.source.ITextureSource;
 import engine.texture.Texture;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,10 +17,16 @@ public class TexturedModel extends RawModel {
     private Texture texture;
 
 
-    public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, String file) {
+    public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, ITextureSource textureSource) {
         super(name, vao, verticesCount, indicesCount);
-        texture = new Texture(file);
+        texture = new Texture(textureSource);
         texture.load();
+    }
+
+    public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, Texture texture) {
+        super(name, vao, verticesCount, indicesCount);
+        this.texture = texture;
+        this.texture.load();
     }
 
     @Override

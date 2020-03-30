@@ -1,5 +1,6 @@
 package engine.model;
 
+import engine.MemoryManager;
 import engine.buffer.VertexArrayObject;
 import engine.math.ITransformable;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class RawModel implements ITransformable {
         this.verticesCount = verticesCount;
         this.indicesCount = indicesCount;
         this.transformation = new Matrix4f();
+        MemoryManager.getModels().add(this);
     }
 
     public void draw() {

@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d600db0-5502-4f4c-acd2-5de2405b231b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shader/fontFragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shader/fontVertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/Render.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/camera/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/model/FontModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/shader/FontShader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/text/Font.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/text/Glyph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/text/Text.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/texture/source/ITextureSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/texture/source/TextureSourceBufferedImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/texture/source/TextureSourceMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/texture/source/TextureSourcePNG.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/META-INF/SimpleEngine.kotlin_module" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/engine/MemoryManager.class" afterDir="false" />
@@ -22,13 +34,17 @@
       <change afterPath="$PROJECT_DIR$/target/classes/engine/shader/StaticShader.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/engine/texture/Texture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/vertex.shader" beforeDir="false" afterPath="$PROJECT_DIR$/shader/vertex.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/fragment.shader" beforeDir="false" afterPath="$PROJECT_DIR$/shader/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/vertex.shader" beforeDir="false" afterPath="$PROJECT_DIR$/shader/vertex.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/buffer/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/buffer/Loader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/display/WindowEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/display/WindowEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/TexturedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/TexturedModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/texture/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/texture/Texture.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +54,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="GLSL Shader" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,6 +85,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -121,6 +139,8 @@
       <workItem from="1585464027902" duration="9576000" />
       <workItem from="1585475166943" duration="5999000" />
       <workItem from="1585481280208" duration="4738000" />
+      <workItem from="1585486044426" duration="22000" />
+      <workItem from="1585515075154" duration="18551000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1585481516751</created>
@@ -129,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585481516751</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init">
+      <created>1585486064477</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585486064477</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,18 +171,22 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="555" y="215" width="1158" height="684" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1585478977816" />
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585480345156">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585531192157">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585480345156" />
-    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585463751859">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585531192157" />
+    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585522063233">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585463751859" />
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585481516638">
+    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585522063233" />
+    <state x="718" y="257" key="#xdebugger.evaluate" timestamp="1585523957575">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585481516638" />
+    <state x="718" y="257" key="#xdebugger.evaluate/0.27.1920.1053@0.27.1920.1053" timestamp="1585523957575" />
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585486064229">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585486064229" />
     <state width="459" height="466" key="DebuggerActiveHint" timestamp="1585469477406">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -164,57 +195,46 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="731" y="297" width="447" height="520" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1585481479746" />
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom" timestamp="1585486018635">
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1585533787754">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018635" />
-    <state width="1874" height="340" key="GridCell.Tab.0.center" timestamp="1585486018635">
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585533787754" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1585533787754">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018635" />
-    <state width="1874" height="340" key="GridCell.Tab.0.left" timestamp="1585486018634">
+    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585533787754" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1585533787754">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018634" />
-    <state width="1874" height="340" key="GridCell.Tab.0.right" timestamp="1585486018635">
+    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585533787754" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1585533787754">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018635" />
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585486018636">
+    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585533787754" />
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585533059574">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018636" />
-    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585486018636">
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585533059574" />
+    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585533059574">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018636" />
-    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585486018635">
+    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585533059574" />
+    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585533059574">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018635" />
-    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585486018636">
+    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585533059574" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585533059574">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585486018636" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585533059574" />
     <state width="960" height="526" key="XDebugger.FullValuePopup" timestamp="1585485754102">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="960" height="526" key="XDebugger.FullValuePopup/0.27.1920.1053@0.27.1920.1053" timestamp="1585485754102" />
-    <state x="616" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585486044171">
+    <state x="616" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585515103812">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="616" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585486044171" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="616" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585515103812" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SimpleEngine$Main.ic" NAME="Main Coverage Results" MODIFIED="1585476547750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

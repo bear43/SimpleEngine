@@ -12,8 +12,8 @@ import java.awt.*;
 
 public class StartHelper {
 
-    private static final int WIDTH = 1024;
-    private static final int HEIGHT = 768;
+    public static final int WIDTH = 1024;
+    public static final int HEIGHT = 768;
     private static final String title = "Simple Engine";
     private static long pWindow;
 
@@ -34,7 +34,7 @@ public class StartHelper {
         GLFW.glfwSetCursorPosCallback(pWindow, new MouseCursorEvent());
         GLFW.glfwSetWindowSizeCallback(pWindow, new WindowEvent());
         GL.createCapabilities();
-        //GL40.glEnable(GL11.GL_DEPTH_TEST);
+        GL40.glEnable(GL11.GL_DEPTH_TEST);
         //GL40.glEnable(GL11.GL_CULL_FACE);
         GLFW.glfwShowWindow(pWindow);
     }

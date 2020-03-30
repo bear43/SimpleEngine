@@ -7,8 +7,8 @@ public class StaticShader extends ShaderProgram {
 
     public StaticShader() {
         super(
-                new Shader("vertex.shader", GL_VERTEX_SHADER),
-                new Shader("fragment.shader", GL_FRAGMENT_SHADER)
+                new Shader("vertex.glsl", GL_VERTEX_SHADER),
+                new Shader("fragment.glsl", GL_FRAGMENT_SHADER)
         );
     }
 

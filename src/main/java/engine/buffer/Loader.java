@@ -1,7 +1,10 @@
 package engine.buffer;
 
+import engine.model.FontModel;
 import engine.model.RawModel;
 import engine.model.TexturedModel;
+import engine.texture.Texture;
+import engine.texture.source.ITextureSource;
 
 import static org.lwjgl.opengl.GL40.*;
 
@@ -30,7 +33,24 @@ public class Loader {
         return vertexArrayObject;
     }
 
-    public static RawModel createModel(String title, float[] vertices, int verticesCount, int[] indices, float[] texCoords) {
-        return new TexturedModel(title, createVAO(createVBO(vertices, vertices.length/verticesCount), createEBO(indices),createVBO(texCoords, 2)), verticesCount, indices.length, "test.png");
+    public static RawModel createModel(String title, float[] vertices, int verticesCount, int[] indices, float[] texCoords, ITextureSource textureSource) {
+        return new TexturedModel(title, createVAO(createVBO(vertices, vertices.length/verticesCount), createEBO(indices),createVBO(texCoords, 2)), verticesCount, indices.length, textureSource);
+    }
+
+    public static RawModel createModel(String title, float[] vertices, int verticesCount, int[] indices, float[] texCoords, Texture texture) {
+        return new TexturedModel(title, createVAO(createVBO(vertices, vertices.length/verticesCount), createEBO(indices),createVBO(texCoords, 2)), verticesCount, indices.length, texture);
+    }
+
+    public static FontModel createFontModel(String title, float[] vertices, int verticesCount, int[] indices, float[] texCoords, Texture texture) {
+        return new FontModel(title, createVAO(createVBO(vertices, vertices.length/verticesCount), createEBO(indices),createVBO(texCoords, 2)), verticesCount, indices.length, texture);
+    }
+
+    public static RawModel createModel(String title, float[] vertices, int verticesCount, int[] indices, ITextureSource textureSource) {
+        return createModel(title, vertices, verticesCount, indices, new float[] {
+                0, 0,
+                0, 1,
+                1, 1,
+                1, 0
+        }, textureSource);
     }
 }
