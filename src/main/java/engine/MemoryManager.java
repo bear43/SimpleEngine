@@ -4,6 +4,7 @@ import engine.buffer.VertexArrayObject;
 import engine.buffer.VertexBufferObject;
 import engine.model.FontModel;
 import engine.model.RawModel;
+import engine.render.IRender;
 import engine.shader.ShaderProgram;
 import engine.shader.Shader;
 import engine.text.Text;
@@ -23,6 +24,7 @@ public class MemoryManager {
     private static List<Texture> textures = new ArrayList<>();
     private static List<Text> texts = new ArrayList<>();
     private static List<FontModel> fontModels = new ArrayList<>();
+    private static List<IRender> renders = new ArrayList<>();
 
     public static List<VertexArrayObject> getVertexArrayObjects() {
         return vertexArrayObjects;
@@ -50,6 +52,10 @@ public class MemoryManager {
 
     public static List<Text> getTexts() {
         return texts;
+    }
+
+    public static List<IRender> getRenders() {
+        return renders;
     }
 
     public static List<FontModel> getFontModels() {

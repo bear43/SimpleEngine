@@ -23,6 +23,8 @@ public class Camera {
 
     private int width;
     private int height;
+    private float halfWidth;
+    private float halfHeight;
 
 
     public Camera(
@@ -40,6 +42,8 @@ public class Camera {
         this.fov = fov;
         this.width = width;
         this.height = height;
+        this.halfWidth = width/2.0f;
+        this.halfHeight = height/2.0f;
         this.aspect = (float)width/(float)height;
         this.zNear = zNear;
         this.zFar = zFar;
@@ -71,6 +75,8 @@ public class Camera {
         this.fov = fov;
         this.width = width;
         this.height = height;
+        this.halfWidth = width/2.0f;
+        this.halfHeight = height/2.0f;
         this.aspect = (float)width/(float)height;
         this.zNear = zNear;
         this.zFar = zFar;
@@ -91,6 +97,10 @@ public class Camera {
     }
 
     public void updateProjectionMatrixOnResize(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.halfWidth = width/2.0f;
+        this.halfHeight = height/2.0f;
         this.aspect = (float)width/(float)height;
         updateProjectionMatrix();
     }
@@ -105,5 +115,13 @@ public class Camera {
 
     public Vector2f normalizedRelativeToWidthAndHeight(float x, float y) {
         return new Vector2f(x/width, y/height);
+    }
+
+    public Vector2f normalizedDisplayCoordinateToWidthAndHeight(float x, float y) {
+        return new Vector2f(x/halfWidth, y/halfHeight);
+    }
+
+    public Vector2f convertAbsoluteDisplayPositionToDisplayCoordinate(float x, float y) {
+        return new Vector2f(x-halfWidth, halfHeight-y);
     }
 }

@@ -33,6 +33,7 @@ public class StartHelper {
         GLFW.glfwSetKeyCallback(pWindow, new KeyboardEvent());
         GLFW.glfwSetCursorPosCallback(pWindow, new MouseCursorEvent());
         GLFW.glfwSetWindowSizeCallback(pWindow, new WindowEvent());
+        GLFW.glfwSwapInterval(1);
         GL.createCapabilities();
         GL40.glEnable(GL11.GL_DEPTH_TEST);
         //GL40.glEnable(GL11.GL_CULL_FACE);

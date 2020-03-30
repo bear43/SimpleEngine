@@ -1,6 +1,7 @@
 package engine.text;
 
 
+import engine.MemoryManager;
 import engine.model.FontModel;
 import engine.model.TexturedModel;
 import lombok.Data;
@@ -41,16 +42,19 @@ public class Text {
         this.models = new ArrayList<>();
     }
 
-    public void generateModels() {
-        for (char character : text.toCharArray()) {
-            models.add(font.createCharacterModel(character, 480f, 300f, 620f, 500f));
+    public void generateModels(float x, float y) {
+        models.addAll(font.createModels(text, x, y));
+    }
+
+    public void draw(float x, float y) {
+        if(models.isEmpty()) {
+            generateModels(x, y);
         }
     }
 
-    public void draw() {
-        if(models.isEmpty()) {
-            generateModels();
-        }
+    public void hide() {
+        MemoryManager.getModels().removeAll(models);
+        models.clear();
     }
 
 }

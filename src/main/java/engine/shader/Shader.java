@@ -33,7 +33,8 @@ public class Shader implements ICleanable {
             glShaderSource(id, shaderText);
             glCompileShader(id);
             if(glGetShaderi(id, GL_COMPILE_STATUS) == GL_FALSE) {
-                throw new RuntimeException("Cannot compile shader " + file);
+                String error = glGetShaderInfoLog(id);
+                throw new RuntimeException("Cannot compile shader " + file + ". error: " + error);
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex);

@@ -1,25 +1,20 @@
 package engine.text;
 
-import engine.MemoryManager;
 import engine.Render;
 import engine.buffer.Loader;
-import engine.camera.Camera;
 import engine.model.FontModel;
-import engine.model.TexturedModel;
 import engine.texture.Texture;
-import engine.texture.source.ITextureSource;
 import engine.texture.source.TextureSourceBufferedImage;
 import lombok.Data;
 import org.joml.Vector2f;
 
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 public class Font {
@@ -52,15 +47,16 @@ public class Font {
     }
 
     private void evaluateFontAtlasWidthAndHeight() {
-        for (int i = 32; i < 127; i++) {
-            if (i == 127) {
+        for (int i = 32; i < 1270; i++) {
+            if (i > 127 && i < 1000) {
                 continue;
             }
             char character = (char) i;
             BufferedImage ch = createCharImage(character);
-
-            imageWidth += ch.getWidth();
-            imageHeight = Math.max(imageHeight, ch.getHeight());
+            if(ch != null) {
+                imageWidth += ch.getWidth();
+                imageHeight = Math.max(imageHeight, ch.getHeight());
+            }
         }
 
         fontHeight = imageHeight;
@@ -77,6 +73,9 @@ public class Font {
         g.dispose();
         int charWidth = metrics.charWidth(character);
         int charHeight = metrics.getHeight();
+        if(charWidth == 0 || charHeight == 0) {
+            return null;
+        }
         image = new BufferedImage(charWidth, charHeight, BufferedImage.TYPE_INT_ARGB);
         g = image.createGraphics();
         if (antiAlias) {
@@ -93,21 +92,28 @@ public class Font {
         int x = 0;
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = image.createGraphics();
-        for (int i = 32; i < 127; i++) {
-            if (i == 127) {
+        for (int i = 32; i < 1270; i++) {
+            if (i > 127 && i < 1000) {
                 continue;
             }
             char c = (char) i;
             BufferedImage charImage = createCharImage(c);
 
-            int charWidth = charImage.getWidth();
-            int charHeight = charImage.getHeight();
+            if(charImage != null) {
+                int charWidth = charImage.getWidth();
+                int charHeight = charImage.getHeight();
 
-            Glyph ch = new Glyph(charWidth, charHeight, x, image.getHeight() - charHeight);
-            g.drawImage(charImage, x, 0, null);
-            x += ch.getWidth();
-            glyphs.put(c, ch);
+                Glyph ch = new Glyph(charWidth, charHeight, x, image.getHeight() - charHeight);
+                g.drawImage(charImage, x, 0, null);
+                x += ch.getWidth();
+                glyphs.put(c, ch);
+            }
         }
+/*        try {
+            ImageIO.write(image, "png", Files.newOutputStream(Path.of("./textures/now.png")));
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }*/
         atlasTexture = new Texture(new TextureSourceBufferedImage(image));
     }
 
@@ -120,43 +126,64 @@ public class Font {
                 this.color.equals(color);
     }
 
-    FontModel createCharacterModel(Character character, float x, float y, float x2, float y2) {
+    FontModel createCharacterModel(Character character, float x, float y, Vector2f offset) {
         var glyph = glyphs.get(character);
         if(glyph == null) {
-            throw new RuntimeException("Cannot recognize this symbol: " + character);
+            if(character == '\n') {
+                offset.y = offset.y + fontHeight;
+                offset.x = 0f;
+                return null;
+            } else {
+                throw new RuntimeException("Cannot recognize this symbol: " + character);
+            }
         } else {
-            Vector2f normalizedLeftTop = Render.mainCamera.normalizedRelativeToWidthAndHeight(x, y);
-            Vector2f normalizedRightBottom = Render.mainCamera.normalizedRelativeToWidthAndHeight(x2, y2);
-            Vector2f normalizedGlyphWidthAndHeight = Render.mainCamera.normalizedRelativeToWidthAndHeight(glyph.getWidth(), glyph.getHeight());
-            /*
-                -------
-                |     |
-                |     |
-                |     |
-                -------
-                x, y
-                x, y+height
-                x+width, y+height,
-                x+width, y
-
-            */
+            offset.x = offset.x + glyph.getWidth();
+            Vector2f displayCoordinate = Render.mainCamera.convertAbsoluteDisplayPositionToDisplayCoordinate(x, y);
+            x = displayCoordinate.x;
+            y = displayCoordinate.y;
+            Vector2f normalizedLeftTop = Render.mainCamera.normalizedDisplayCoordinateToWidthAndHeight(x, y);
+            Vector2f normalizedGlyphWidthAndHeight = Render.mainCamera.normalizedDisplayCoordinateToWidthAndHeight(glyph.getWidth(), glyph.getHeight());
+            Vector2f normalizedRightBottom = new Vector2f(normalizedLeftTop.x + normalizedGlyphWidthAndHeight.x, normalizedLeftTop.y + normalizedGlyphWidthAndHeight.y);
             Vector2f normalizedTexCoords1 = normalizedRelativeToWidthAndHeight(glyph.getX(), glyph.getY());
             Vector2f normalizedTexCoords2 = normalizedRelativeToWidthAndHeight(glyph.getWidth(), glyph.getHeight());
+            Vector2f
+                    a = new Vector2f(normalizedLeftTop.x, normalizedLeftTop.y),
+                    b = new Vector2f(normalizedRightBottom.x-normalizedGlyphWidthAndHeight.x, normalizedRightBottom.y),
+                    c = new Vector2f(normalizedRightBottom.x, normalizedRightBottom.y),
+                    d = new Vector2f(normalizedRightBottom.x, normalizedRightBottom.y - normalizedGlyphWidthAndHeight.y);
+            Vector2f
+                    texA = new Vector2f(normalizedTexCoords1.x, normalizedTexCoords1.y+normalizedTexCoords2.y),
+                    texB = new Vector2f(normalizedTexCoords1.x, normalizedTexCoords1.y),
+                    texC = new Vector2f(normalizedTexCoords1.x+normalizedTexCoords2.x, normalizedTexCoords1.y),
+                    texD = new Vector2f(normalizedTexCoords1.x+normalizedTexCoords2.x, normalizedTexCoords1.y+normalizedTexCoords2.y);
             return  Loader.createFontModel(String.format("text ch %c", character), new float[] {
-                    normalizedLeftTop.x, normalizedLeftTop.y, 0.0f,
-                    normalizedRightBottom.x-normalizedGlyphWidthAndHeight.x, normalizedRightBottom.y, 0.0f,
-                    normalizedRightBottom.x, normalizedRightBottom.y, 0.0f,
-                    normalizedRightBottom.x, normalizedRightBottom.y - normalizedGlyphWidthAndHeight.y, 0.0f
+                    a.x, a.y,
+                    b.x, b.y,
+                    c.x, c.y,
+                    d.x, d.y
             }, 4, new int[] {
                     0, 1, 2,
                     2, 3, 0
             }, new float[] {
-                    normalizedTexCoords1.x, normalizedTexCoords1.y,
-                    normalizedTexCoords1.x, normalizedTexCoords1.y+normalizedTexCoords2.y,
-                    normalizedTexCoords1.x+normalizedTexCoords2.x, normalizedTexCoords1.y+normalizedTexCoords2.y,
-                    normalizedTexCoords1.x+normalizedTexCoords2.x, normalizedTexCoords1.y
+                    texA.x, texA.y,
+                    texB.x, texB.y,
+                    texC.x, texC.y,
+                    texD.x, texD.y
             }, atlasTexture);
         }
+    }
+
+    java.util.List<FontModel> createModels(String string, float x, float y) {
+        Vector2f offset = new Vector2f();
+        java.util.List<FontModel> models = new ArrayList<>();
+        FontModel model;
+        for(Character character : string.toCharArray()) {
+            model = createCharacterModel(character, x + offset.x, y + offset.y, offset);
+            if(model != null) {
+                models.add(model);
+            }
+        }
+        return models;
     }
 
     private Vector2f normalizedRelativeToWidthAndHeight(float x, float y) {

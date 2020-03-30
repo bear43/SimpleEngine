@@ -3,11 +3,13 @@ package engine;
 import engine.buffer.Loader;
 import engine.camera.Camera;
 import engine.display.StartHelper;
+import engine.model.FontModel;
 import engine.model.RawModel;
 import engine.model.TexturedModel;
-import engine.shader.FontShader;
-import engine.shader.ShaderProgram;
-import engine.shader.StaticShader;
+import engine.render.FPSRender;
+import engine.render.IRender;
+import engine.render.RenderProcessor;
+import engine.shader.*;
 import engine.text.Text;
 import engine.texture.source.TextureSourcePNG;
 
@@ -18,10 +20,10 @@ import static org.lwjgl.opengl.GL11.*;
 public class Render {
 
     private static final float[] triangle = {
-            0.25f, 0.25f, 0.0f,
             -0.25f, 0.25f, 0.0f,
             -0.25f, -0.25f, 0.0f,
-            0.25f, -0.25f, 0.0f
+            0.25f, -0.25f, 0.0f,
+            0.25f, 0.25f, 0.0f
     };
 
     private static final int[] indices = {
@@ -30,10 +32,10 @@ public class Render {
     };
 
     private static final float[] texCoords = {
-            0.8947368f, 0f,
-            0.8842105f, 0.0f,
-            0.8842105f, 1f,
-            0.8947368f, 1f
+            0f, 0f,
+            0f, 1f,
+            1f, 1f,
+            1f, 0f
     };
 
     private static RawModel triangleModel;
@@ -41,8 +43,6 @@ public class Render {
     private static ShaderProgram staticShader;
 
     private static ShaderProgram fontShader;
-
-    private static Text text;
 
     public static Camera mainCamera = new Camera(
             45.0f,
@@ -56,13 +56,12 @@ public class Render {
     );
 
     public static void init() {
-        triangleModel = Loader.createModel("triangle", triangle, 4, indices, texCoords, new TextureSourcePNG("new.png"));
-        text = new Text(Font.MONOSPACED, Font.PLAIN, 33, true, Color.WHITE, "t");
+        triangleModel = Loader.createModel("triangle", triangle, 4, indices, texCoords, new TextureSourcePNG("test.png"));
         staticShader = new StaticShader();
         staticShader.link();
         fontShader = new FontShader();
         fontShader.link();
-        text.draw();
+        new FPSRender();
     }
 
     public static void render() {
@@ -71,13 +70,19 @@ public class Render {
         triangleModel.getTransformation().rotate(0.01f, 0.0f, 1.0f, 0.0f);
         staticShader.use();
         mainCamera.applyViewAndProjectionMatrices(staticShader);
-        MemoryManager.getModels().forEach(model -> {
-            staticShader.applyTransformation(model);
-            model.draw();
-        });
         staticShader.drop();
-        fontShader.use();
-        MemoryManager.getFontModels().forEach(TexturedModel::draw);
-        fontShader.drop();
+        MemoryManager.getRenders().forEach(RenderProcessor::processRender);
+        MemoryManager.getModels().forEach(model -> {
+            if(model instanceof FontModel) {
+                fontShader.use();
+                model.draw();
+                fontShader.drop();
+            } else {
+                staticShader.use();
+                staticShader.applyTransformation(model);
+                model.draw();
+                staticShader.drop();
+            }
+        });
     }
 }
