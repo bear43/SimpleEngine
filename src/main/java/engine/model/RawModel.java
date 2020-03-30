@@ -6,11 +6,13 @@ import engine.math.ITransformable;
 import lombok.Data;
 import org.joml.Matrix4f;
 
+import java.util.ArrayList;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
 @Data
-public class RawModel implements ITransformable {
+public class RawModel implements IModel {
     protected String name;
     protected VertexArrayObject vertexArrayObject;
     protected int verticesCount;
@@ -23,7 +25,8 @@ public class RawModel implements ITransformable {
         this.verticesCount = verticesCount;
         this.indicesCount = indicesCount;
         this.transformation = new Matrix4f();
-        MemoryManager.getModels().add(this);
+        MemoryManager.getModels().putIfAbsent(this.getClass(), new ArrayList<>());
+        MemoryManager.getModels().get(this.getClass()).add(this);
     }
 
     public void draw() {

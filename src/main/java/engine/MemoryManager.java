@@ -3,6 +3,7 @@ package engine;
 import engine.buffer.VertexArrayObject;
 import engine.buffer.VertexBufferObject;
 import engine.model.FontModel;
+import engine.model.IModel;
 import engine.model.RawModel;
 import engine.render.IRender;
 import engine.shader.ShaderProgram;
@@ -12,7 +13,9 @@ import engine.texture.Texture;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class MemoryManager {
@@ -20,7 +23,7 @@ public class MemoryManager {
     private static List<VertexBufferObject> vertexBufferObjects = new ArrayList<>();
     private static List<Shader> shaders = new ArrayList<>();
     private static List<ShaderProgram> shaderPrograms = new ArrayList<>();
-    private static List<RawModel> models = new ArrayList<>();
+    private static Map<Class, List<IModel>> models = new HashMap<>();
     private static List<Texture> textures = new ArrayList<>();
     private static List<Text> texts = new ArrayList<>();
     private static List<FontModel> fontModels = new ArrayList<>();
@@ -42,7 +45,7 @@ public class MemoryManager {
         return shaderPrograms;
     }
 
-    public static List<RawModel> getModels() {
+    public static Map<Class, List<IModel>> getModels() {
         return models;
     }
 
@@ -60,6 +63,15 @@ public class MemoryManager {
 
     public static List<FontModel> getFontModels() {
         return fontModels;
+    }
+
+    public static <ShaderProgramType extends ShaderProgram> ShaderProgramType getShaderProgramByClass(Class<ShaderProgramType> shaderClass) {
+        for(ShaderProgram shaderProgram : shaderPrograms) {
+            if(shaderProgram.getClass().equals(shaderClass)) {
+                return (ShaderProgramType)shaderProgram;
+            }
+        }
+        return null;
     }
 
     public static void clean() {

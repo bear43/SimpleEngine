@@ -1,5 +1,6 @@
 package engine.shader;
 
+import engine.MemoryManager;
 import engine.buffer.ICleanable;
 import engine.math.ITransformable;
 import lombok.Data;
@@ -23,9 +24,12 @@ public abstract class ShaderProgram implements ICleanable {
     protected int projectionMatrixLocation;
     protected int viewMatrixLocation;
 
-    public ShaderProgram() {}
+    public ShaderProgram() {
+        MemoryManager.getShaderPrograms().add(this);
+    }
 
     public ShaderProgram(Shader vertexShader, Shader fragmentShader) {
+        this();
         this.vertexShader = vertexShader;
         this.fragmentShader = fragmentShader;
         this.id = glCreateProgram();

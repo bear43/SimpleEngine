@@ -4,6 +4,7 @@ import engine.shader.ShaderProgram;
 import engine.shader.ShaderResolver;
 
 public class RenderProcessor {
+
     public static void processRender(IRender render) {
         ShaderProgram shaderProgram = ShaderResolver.resolveFromRender(render);
         if(shaderProgram != null) {

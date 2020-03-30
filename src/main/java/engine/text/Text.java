@@ -53,7 +53,9 @@ public class Text {
     }
 
     public void hide() {
-        MemoryManager.getModels().removeAll(models);
+        if(MemoryManager.getModels().containsKey(FontModel.class)) {
+            MemoryManager.getModels().get(FontModel.class).removeAll(models);
+        }
         models.clear();
     }
 

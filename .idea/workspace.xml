@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d600db0-5502-4f4c-acd2-5de2405b231b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/render/FPSRender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/render/IRender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/render/RenderProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/shader/UseShader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/model/IModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/render/FontRender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/render/StaticRender.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/engine/MemoryManager.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/engine/buffer/ICleanable.class" afterDir="false" />
@@ -25,15 +23,13 @@
       <change afterPath="$PROJECT_DIR$/target/classes/engine/shader/StaticShader.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/engine/texture/Texture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/fontVertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/fontVertex.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Render.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/camera/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/camera/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/FontModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/FontModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/text/Font.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/text/Font.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/render/RenderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/render/RenderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/UseShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/UseShader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/text/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/text/Text.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +42,8 @@
       <list>
         <option value="GLSL Shader" />
         <option value="Interface" />
-        <option value="AnnotationType" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -132,7 +128,7 @@
       <workItem from="1585481280208" duration="4738000" />
       <workItem from="1585486044426" duration="22000" />
       <workItem from="1585515075154" duration="18851000" />
-      <workItem from="1585568256344" duration="11771000" />
+      <workItem from="1585568256344" duration="15136000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1585481516751</created>
@@ -155,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585533861700</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Text almost done. There is left a bug with atlas letters count and letter size, this case letters are not drawing. Need to inspect the problem.">
+      <created>1585580361354</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585580361354</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,17 +167,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
     <MESSAGE value="text progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="text progress" />
+    <MESSAGE value="Text almost done. There is left a bug with atlas letters count and letter size, this case letters are not drawing. Need to inspect the problem." />
+    <option name="LAST_COMMIT_MESSAGE" value="Text almost done. There is left a bug with atlas letters count and letter size, this case letters are not drawing. Need to inspect the problem." />
   </component>
   <component name="WindowStateProjectService">
     <state x="555" y="215" width="1158" height="684" key="#Project_Structure" timestamp="1585478977816">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="555" y="215" width="1158" height="684" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1585478977816" />
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585578248660">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585582167596">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585578248660" />
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585582167596" />
     <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585522063233">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -183,54 +187,58 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="718" y="257" key="#xdebugger.evaluate/0.27.1920.1053@0.27.1920.1053" timestamp="1585523957575" />
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585533861581">
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585580361219">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585533861581" />
-    <state width="459" height="466" key="DebuggerActiveHint" timestamp="1585469477406">
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585580361219" />
+    <state width="459" height="466" key="DebuggerActiveHint" timestamp="1585580863007">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="459" height="466" key="DebuggerActiveHint/0.27.1920.1053@0.27.1920.1053" timestamp="1585469477406" />
+    <state width="459" height="466" key="DebuggerActiveHint/0.27.1920.1053@0.27.1920.1053" timestamp="1585580863007" />
     <state x="731" y="297" width="447" height="520" key="FileChooserDialogImpl" timestamp="1585481479746">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="731" y="297" width="447" height="520" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1585481479746" />
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1585580230286">
+    <state width="1874" height="340" key="GridCell.Tab.0.bottom" timestamp="1585583203739">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585580230286" />
-    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1585580230285">
+    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585583203739" />
+    <state width="1874" height="340" key="GridCell.Tab.0.center" timestamp="1585583203738">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585580230285" />
-    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1585580230285">
+    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585583203738" />
+    <state width="1874" height="340" key="GridCell.Tab.0.left" timestamp="1585583203738">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585580230285" />
-    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1585580230286">
+    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585583203738" />
+    <state width="1874" height="340" key="GridCell.Tab.0.right" timestamp="1585583203738">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585580230286" />
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585578003923">
+    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585583203738" />
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585583207408">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585578003923" />
-    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585578003922">
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585583207408" />
+    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585583207407">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585578003922" />
-    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585578003922">
+    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585583207407" />
+    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585583207407">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585578003922" />
-    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585578003923">
+    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585583207407" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585583207407">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585578003923" />
-    <state width="960" height="526" key="XDebugger.FullValuePopup" timestamp="1585485754102">
+    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585583207407" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1585580480958">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="960" height="526" key="XDebugger.FullValuePopup/0.27.1920.1053@0.27.1920.1053" timestamp="1585485754102" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585580480958" />
+    <state width="960" height="526" key="XDebugger.FullValuePopup" timestamp="1585580863005">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="960" height="526" key="XDebugger.FullValuePopup/0.27.1920.1053@0.27.1920.1053" timestamp="1585580863005" />
     <state x="616" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585568255689">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

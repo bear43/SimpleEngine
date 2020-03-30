@@ -6,9 +6,7 @@ import engine.display.StartHelper;
 import engine.model.FontModel;
 import engine.model.RawModel;
 import engine.model.TexturedModel;
-import engine.render.FPSRender;
-import engine.render.IRender;
-import engine.render.RenderProcessor;
+import engine.render.*;
 import engine.shader.*;
 import engine.text.Text;
 import engine.texture.source.TextureSourcePNG;
@@ -61,6 +59,8 @@ public class Render {
         staticShader.link();
         fontShader = new FontShader();
         fontShader.link();
+        new FontRender();
+        new StaticRender();
         new FPSRender();
     }
 
@@ -72,17 +72,5 @@ public class Render {
         mainCamera.applyViewAndProjectionMatrices(staticShader);
         staticShader.drop();
         MemoryManager.getRenders().forEach(RenderProcessor::processRender);
-        MemoryManager.getModels().forEach(model -> {
-            if(model instanceof FontModel) {
-                fontShader.use();
-                model.draw();
-                fontShader.drop();
-            } else {
-                staticShader.use();
-                staticShader.applyTransformation(model);
-                model.draw();
-                staticShader.drop();
-            }
-        });
     }
 }
