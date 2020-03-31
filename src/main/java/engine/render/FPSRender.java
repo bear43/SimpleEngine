@@ -2,9 +2,8 @@ package engine.render;
 
 import engine.shader.FontShader;
 import engine.shader.UseShader;
-import engine.text.Text;
+import engine.gui.text.Text;
 import lombok.Data;
-import lombok.NonNull;
 
 import java.awt.*;
 
@@ -15,6 +14,8 @@ public class FPSRender implements IRender {
     private final String name = "FPSRender";
 
     private int counter;
+
+    private int stableCounter;
 
     private long lastFrameTime;
 
@@ -27,15 +28,14 @@ public class FPSRender implements IRender {
 
     @Override
     public void render() {
-        if(System.currentTimeMillis() - lastFrameTime >= 1000) {
-            fpsText.setText("FPS: " + counter);
-            fpsText.hide();
-            fpsText.draw(10f, 30f);
+        if(System.currentTimeMillis() - lastFrameTime >= 333) {
+            stableCounter = counter*3;
             counter = 0;
-        }
-        if(counter == 0) {
             lastFrameTime = System.currentTimeMillis();
         }
+        fpsText.setText("FPS: " + stableCounter);
+        fpsText.hide();
+        fpsText.draw(10f, 30f);
         counter++;
     }
 }

@@ -1,14 +1,12 @@
 package engine.display;
 
-import engine.io.KeyboardEvent;
-import engine.io.MouseCursorEvent;
+import engine.io.KeyboardEventRoot;
+import engine.io.MouseCursorEventRoot;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL40;
 import org.lwjgl.system.MemoryUtil;
-
-import java.awt.*;
 
 public class StartHelper {
 
@@ -30,13 +28,14 @@ public class StartHelper {
         if(!GLFW.glfwInit()) throw new RuntimeException("Cannot start GLFW");
         createWindowInstance();
         GLFW.glfwMakeContextCurrent(pWindow);
-        GLFW.glfwSetKeyCallback(pWindow, new KeyboardEvent());
-        GLFW.glfwSetCursorPosCallback(pWindow, new MouseCursorEvent());
-        GLFW.glfwSetWindowSizeCallback(pWindow, new WindowEvent());
+        GLFW.glfwSetKeyCallback(pWindow, new KeyboardEventRoot());
+        GLFW.glfwSetCursorPosCallback(pWindow, new MouseCursorEventRoot());
+        GLFW.glfwSetWindowSizeCallback(pWindow, new WindowEventRoot());
         GLFW.glfwSwapInterval(1);
         GL.createCapabilities();
         GL40.glEnable(GL11.GL_DEPTH_TEST);
-        //GL40.glEnable(GL11.GL_CULL_FACE);
+        GL40.glEnable(GL11.GL_CULL_FACE);
+        GLFW.glfwSetInputMode(pWindow, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
         GLFW.glfwShowWindow(pWindow);
     }
 

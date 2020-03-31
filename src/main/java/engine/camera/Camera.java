@@ -21,6 +21,8 @@ public class Camera {
     private Vector3f center;//Eye looks at
     private Vector3f up;//What is up relative to the eye
 
+    private Vector3f direction;
+
     private int width;
     private int height;
     private float halfWidth;
@@ -50,6 +52,7 @@ public class Camera {
         this.eye = eye;
         this.center = center;
         this.up = up;
+        this.direction = this.center.sub(this.eye);
         projectionMatrix = new Matrix4f().setPerspective(fov, aspect, zNear, zFar);
         viewMatrix = new Matrix4f().setLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z);
     }
@@ -80,9 +83,10 @@ public class Camera {
         this.aspect = (float)width/(float)height;
         this.zNear = zNear;
         this.zFar = zFar;
-        eye = new Vector3f(eyeX, eyeY, eyeZ);
-        center = new Vector3f(centerX, centerY, centerZ);
-        up = new Vector3f(upX, upY, upZ);
+        this.eye = new Vector3f(eyeX, eyeY, eyeZ);
+        this.center = new Vector3f(centerX, centerY, centerZ);
+        this.direction = this.center.sub(this.eye);
+        this.up = new Vector3f(upX, upY, upZ);
         projectionMatrix = new Matrix4f().setPerspective(fov, aspect, zNear, zFar);
         viewMatrix = new Matrix4f().setLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
     }
@@ -94,6 +98,10 @@ public class Camera {
 
     public void applyViewMatrix(ShaderProgram shaderProgram) {
         shaderProgram.applyViewMatrix(viewMatrix);
+    }
+
+    public void applyProjectionMatrix(ShaderProgram shaderProgram) {
+        shaderProgram.applyProjectionMatrix(projectionMatrix);
     }
 
     public void updateProjectionMatrixOnResize(int width, int height) {
@@ -123,5 +131,17 @@ public class Camera {
 
     public Vector2f convertAbsoluteDisplayPositionToDisplayCoordinate(float x, float y) {
         return new Vector2f(x-halfWidth, halfHeight-y);
+    }
+
+    private void updateViewMatrixByChangeDirection() {
+        viewMatrix.identity();
+        viewMatrix.lookAt(eye, new Vector3f(eye).add(direction), up);
+    }
+
+    public void setDirection(float x, float y, float z) {
+        direction.x = x;
+        direction.y = y;
+        direction.z = z;
+        updateViewMatrixByChangeDirection();
     }
 }

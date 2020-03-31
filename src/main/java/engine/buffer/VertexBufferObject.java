@@ -99,6 +99,7 @@ public class VertexBufferObject implements ICleanable {
     @Override
     public void clean() {
         glDeleteBuffers(id);
+        MemoryManager.getVertexBufferObjects().remove(this);
     }
 
     @Override

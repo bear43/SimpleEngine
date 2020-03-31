@@ -1,4 +1,4 @@
-package engine.text;
+package engine.gui.text;
 
 import lombok.Data;
 

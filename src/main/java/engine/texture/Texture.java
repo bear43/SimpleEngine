@@ -14,7 +14,6 @@ public class Texture implements ICleanable {
     private static final String DEFAULT_TEXTURE_DIRECTORY = "./textures/";
 
     private int id;
-    private String file;
     private ITextureSource textureSource;
 
     public Texture() {
@@ -25,6 +24,10 @@ public class Texture implements ICleanable {
         this();
         this.textureSource = textureSource;
         MemoryManager.getTextures().add(this);
+    }
+
+    public void freeTextureSource() {
+        textureSource = null;
     }
 
     public void load() {
@@ -49,5 +52,7 @@ public class Texture implements ICleanable {
     @Override
     public void clean() {
         glDeleteTextures(id);
+        freeTextureSource();
+        MemoryManager.getTextures().remove(this);
     }
 }

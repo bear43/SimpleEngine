@@ -1,4 +1,4 @@
-package engine.text;
+package engine.gui.text;
 
 import engine.Render;
 import engine.buffer.Loader;
@@ -8,12 +8,8 @@ import engine.texture.source.TextureSourceBufferedImage;
 import lombok.Data;
 import org.joml.Vector2f;
 
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 @Data
@@ -162,8 +158,8 @@ public class Font {
                     c.x, c.y,
                     d.x, d.y
             }, 4, new int[] {
-                    0, 1, 2,
-                    2, 3, 0
+                    0, 3, 2,
+                    2, 1, 0
             }, new float[] {
                     texA.x, texA.y,
                     texB.x, texB.y,

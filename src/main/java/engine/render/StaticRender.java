@@ -1,6 +1,7 @@
 package engine.render;
 
 import engine.MemoryManager;
+import engine.Render;
 import engine.math.ITransformable;
 import engine.model.FontModel;
 import engine.model.IModel;
@@ -35,6 +36,7 @@ public class StaticRender implements IRender {
         if(!models.isEmpty()) {
             models.forEach(model -> {
                 shaderProgram.applyTransformation(model);
+                Render.mainCamera.applyViewAndProjectionMatrices(shaderProgram);
                 model.draw();
             });
         }

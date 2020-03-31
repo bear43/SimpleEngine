@@ -1,9 +1,11 @@
 package engine.render;
 
 import engine.MemoryManager;
+import engine.Render;
 import engine.model.FontModel;
 import engine.model.IModel;
 import engine.shader.FontShader;
+import engine.shader.StaticShader;
 import engine.shader.UseShader;
 import lombok.Data;
 
@@ -15,6 +17,8 @@ public class FontRender implements IRender {
 
     private final String name = "FontRender";
 
+    private FontShader shaderProgram = MemoryManager.getShaderProgramByClass(FontShader.class);
+
     public FontRender() {
         register();
     }
@@ -23,7 +27,10 @@ public class FontRender implements IRender {
     public void render() {
         List<IModel> models = MemoryManager.getModels().get(FontModel.class);
         if(models != null && !models.isEmpty()) {
-            models.forEach(IModel::draw);
+            models.forEach(model -> {
+                shaderProgram.applyTransformation(model);
+                model.draw();
+            });
         }
     }
 }

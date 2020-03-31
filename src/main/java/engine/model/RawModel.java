@@ -1,6 +1,7 @@
 package engine.model;
 
 import engine.MemoryManager;
+import engine.buffer.ICleanable;
 import engine.buffer.VertexArrayObject;
 import engine.math.ITransformable;
 import lombok.Data;
@@ -12,7 +13,7 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
 @Data
-public class RawModel implements IModel {
+public class RawModel implements IModel, ICleanable {
     protected String name;
     protected VertexArrayObject vertexArrayObject;
     protected int verticesCount;
@@ -41,4 +42,9 @@ public class RawModel implements IModel {
         vertexArrayObject.unbind();
     }
 
+    @Override
+    public void clean() {
+        vertexArrayObject.clean();
+        MemoryManager.getModels().get(this.getClass()).remove(this);
+    }
 }

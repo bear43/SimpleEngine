@@ -2,6 +2,7 @@ import engine.MemoryManager;
 import engine.Render;
 import engine.buffer.Loader;
 import engine.display.StartHelper;
+import engine.io.source.OBJLoader;
 import engine.model.RawModel;
 import engine.shader.ShaderProgram;
 import engine.shader.StaticShader;
@@ -13,6 +14,7 @@ import static org.lwjgl.opengl.GL40.*;
 public class Main {
 
     public static void main(String[] args) {
+        //new OBJLoader().t();
         StartHelper.run();
         Render.init();
         while(!GLFW.glfwWindowShouldClose(StartHelper.getpWindow())) {

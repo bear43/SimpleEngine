@@ -1,14 +1,14 @@
 package engine;
 
+import engine.buffer.ICleanable;
 import engine.buffer.VertexArrayObject;
 import engine.buffer.VertexBufferObject;
 import engine.model.FontModel;
 import engine.model.IModel;
-import engine.model.RawModel;
 import engine.render.IRender;
 import engine.shader.ShaderProgram;
 import engine.shader.Shader;
-import engine.text.Text;
+import engine.gui.text.Text;
 import engine.texture.Texture;
 import lombok.Data;
 
@@ -74,11 +74,23 @@ public class MemoryManager {
         return null;
     }
 
+    private static void concurrentForEach(List<? extends ICleanable> cleanableList) {
+        if(cleanableList != null && !cleanableList.isEmpty()) {
+            ICleanable[] cleanableArray = cleanableList.toArray(new ICleanable[0]);
+            for(ICleanable cleanable : cleanableArray) {
+                if(cleanable != null) {
+                    cleanable.clean();
+                    cleanableList.remove(cleanable);
+                }
+            }
+        }
+    }
+
     public static void clean() {
-        vertexArrayObjects.forEach(VertexArrayObject::clean);
-        vertexBufferObjects.forEach(VertexBufferObject::clean);
-        shaderPrograms.forEach(ShaderProgram::clean);
-        shaders.forEach(Shader::clean);
-        textures.forEach(Texture::clean);
+        concurrentForEach(shaderPrograms);
+        concurrentForEach(shaders);
+        concurrentForEach(textures);
+        concurrentForEach(vertexArrayObjects);
+        concurrentForEach(vertexBufferObjects);
     }
 }

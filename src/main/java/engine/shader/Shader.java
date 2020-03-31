@@ -1,5 +1,6 @@
 package engine.shader;
 
+import engine.MemoryManager;
 import engine.buffer.ICleanable;
 import lombok.Data;
 
@@ -44,6 +45,7 @@ public class Shader implements ICleanable {
     @Override
     public void clean() {
         glDeleteShader(id);
+        MemoryManager.getShaders().remove(this);
     }
 
     @Override

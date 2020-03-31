@@ -111,5 +111,6 @@ public abstract class ShaderProgram implements ICleanable {
         glDetachShader(id, vertexShader.getId());
         glDetachShader(id, fragmentShader.getId());
         glDeleteProgram(id);
+        MemoryManager.getShaderPrograms().remove(this);
     }
 }

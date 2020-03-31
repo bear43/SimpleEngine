@@ -1,7 +1,8 @@
-package engine.text;
+package engine.gui.text;
 
 
 import engine.MemoryManager;
+import engine.buffer.ICleanable;
 import engine.model.FontModel;
 import engine.model.TexturedModel;
 import lombok.Data;
@@ -53,9 +54,7 @@ public class Text {
     }
 
     public void hide() {
-        if(MemoryManager.getModels().containsKey(FontModel.class)) {
-            MemoryManager.getModels().get(FontModel.class).removeAll(models);
-        }
+        models.forEach(ICleanable::clean);
         models.clear();
     }
 
