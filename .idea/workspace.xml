@@ -2,59 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d600db0-5502-4f4c-acd2-5de2405b231b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/camera/CameraMouseMotion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/display/WindowEventRoot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/CameraMouseMotionEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/KeyboardEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/MouseMotionEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/ResizeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/struct/EventManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/struct/IEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/event/struct/IEventRoot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/gui/window/AbstractWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/gui/window/TexturedWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/io/MouseCursorEventRoot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/io/source/IDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/io/source/OBJLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/MemoryManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/buffer/ICleanable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/buffer/Loader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/buffer/VertexArrayObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/buffer/VertexBufferObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/display/StartHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/math/ITransformable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/model/RawModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/model/TexturedModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/shader/Shader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/shader/ShaderProgram.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/shader/StaticShader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/engine/texture/Texture.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/camera/CameraMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/camera/CameraMovementMode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/model/CompositeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/model/IDrawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/util/TripleConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/fontVertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/fontVertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/test.obj" beforeDir="false" afterPath="$PROJECT_DIR$/models/test.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/fontFragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/fontFragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/vertex.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/MemoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Render.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/buffer/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/buffer/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/buffer/VertexArrayObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/buffer/VertexArrayObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/buffer/VertexBufferObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/buffer/VertexBufferObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/camera/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/camera/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/display/StartHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/display/WindowEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/io/KeyboardEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/io/KeyboardEventRoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/io/MouseCursorEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/event/KeyboardEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/event/KeyboardEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/gui/window/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/gui/window/AbstractWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/io/source/IDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/io/source/IDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/io/source/OBJLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/io/source/OBJLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/FontModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/FontModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/RawModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/render/FPSRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/render/FPSRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/model/TexturedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/model/TexturedModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/render/FontRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/render/FontRender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/render/StaticRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/render/StaticRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/shader/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/text/Font.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/gui/text/Font.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/text/Glyph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/gui/text/Glyph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/text/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/gui/text/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/texture/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/texture/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/textures/test.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/engine/MemoryManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/engine/MemoryManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/engine/model/RawModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/engine/model/RawModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/engine/model/TexturedModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/engine/model/TexturedModel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +40,9 @@
       <list>
         <option value="GLSL Shader" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -101,6 +76,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -154,7 +130,8 @@
       <workItem from="1585515075154" duration="18851000" />
       <workItem from="1585568256344" duration="16436000" />
       <workItem from="1585599415440" duration="10759000" />
-      <workItem from="1585661855017" duration="11630000" />
+      <workItem from="1585661855017" duration="11936000" />
+      <workItem from="1585708888892" duration="17381000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1585481516751</created>
@@ -191,7 +168,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585583455369</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Event system. Mouse attached">
+      <created>1585674403108</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585674403108</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Event system. Mouse attached">
+      <created>1585674565217</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585674565217</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,33 +193,34 @@
     <MESSAGE value="text progress" />
     <MESSAGE value="Text almost done. There is left a bug with atlas letters count and letter size, this case letters are not drawing. Need to inspect the problem." />
     <MESSAGE value="Added renderers. Every render service its type of object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added renderers. Every render service its type of object" />
+    <MESSAGE value="Event system. Mouse attached" />
+    <option name="LAST_COMMIT_MESSAGE" value="Event system. Mouse attached" />
   </component>
   <component name="WindowStateProjectService">
     <state x="555" y="215" width="1158" height="684" key="#Project_Structure" timestamp="1585478977816">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="555" y="215" width="1158" height="684" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1585478977816" />
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585672359285">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1585711792874">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585672359285" />
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1585711792874" />
     <state x="534" y="481" width="842" height="152" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585599581159">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="534" y="481" width="842" height="152" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585599581159" />
-    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585522063233">
+    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585713294024">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585522063233" />
+    <state x="717" y="29" width="476" height="1051" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585713294024" />
     <state x="718" y="257" key="#xdebugger.evaluate" timestamp="1585523957575">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="718" y="257" key="#xdebugger.evaluate/0.27.1920.1053@0.27.1920.1053" timestamp="1585523957575" />
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585674402894">
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2" timestamp="1585674565170">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585674402894" />
+    <state x="525" y="150" width="860" height="814" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585674565170" />
     <state width="518" height="466" key="DebuggerActiveHint" timestamp="1585604087226">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -237,50 +229,65 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="731" y="297" width="447" height="520" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1585481479746" />
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom" timestamp="1585673179889">
+    <state width="1874" height="340" key="GridCell.Tab.0.bottom" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585673179889" />
-    <state width="1874" height="340" key="GridCell.Tab.0.center" timestamp="1585673179889">
+    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state width="1874" height="340" key="GridCell.Tab.0.center" timestamp="1585729067965">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585673179889" />
-    <state width="1874" height="340" key="GridCell.Tab.0.left" timestamp="1585673179888">
+    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067965" />
+    <state width="1874" height="340" key="GridCell.Tab.0.left" timestamp="1585729067965">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585673179888" />
-    <state width="1874" height="340" key="GridCell.Tab.0.right" timestamp="1585673179889">
+    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067965" />
+    <state width="1874" height="340" key="GridCell.Tab.0.right" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585673179889" />
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585673180806">
+    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585673180806" />
-    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585673180805">
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585673180805" />
-    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585673180805">
+    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585673180805" />
-    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585673180805">
+    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1585729067966">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585673180805" />
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1585674406899">
+    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585729067966" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1585674659546">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585674406899" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585674659546" />
     <state width="960" height="526" key="XDebugger.FullValuePopup" timestamp="1585580863005">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="960" height="526" key="XDebugger.FullValuePopup/0.27.1920.1053@0.27.1920.1053" timestamp="1585580863005" />
-    <state x="616" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585661855591">
+    <state x="616" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585708889102">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="616" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585661855591" />
+    <state x="616" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585708889102" />
+    <state x="1088" y="360" width="524" height="471" key="extract.method.dialog" timestamp="1585709532127">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="1088" y="360" width="524" height="471" key="extract.method.dialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585709532127" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/engine/MemoryManager.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SimpleEngine$Main.ic" NAME="Main Coverage Results" MODIFIED="1585669656711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

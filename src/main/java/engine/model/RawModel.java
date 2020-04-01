@@ -3,7 +3,6 @@ package engine.model;
 import engine.MemoryManager;
 import engine.buffer.ICleanable;
 import engine.buffer.VertexArrayObject;
-import engine.math.ITransformable;
 import lombok.Data;
 import org.joml.Matrix4f;
 
@@ -20,14 +19,20 @@ public class RawModel implements IModel, ICleanable {
     protected int indicesCount;
     protected Matrix4f transformation;
 
-    public RawModel(String name, VertexArrayObject vertexArrayObject, int verticesCount, int indicesCount) {
+    public RawModel(String name, VertexArrayObject vertexArrayObject, int verticesCount, int indicesCount, boolean register) {
         this.name = name;
         this.vertexArrayObject = vertexArrayObject;
         this.verticesCount = verticesCount;
         this.indicesCount = indicesCount;
         this.transformation = new Matrix4f();
-        MemoryManager.getModels().putIfAbsent(this.getClass(), new ArrayList<>());
-        MemoryManager.getModels().get(this.getClass()).add(this);
+        if(register) {
+            MemoryManager.getModels().putIfAbsent(this.getClass(), new ArrayList<>());
+            MemoryManager.getModels().get(this.getClass()).add(this);
+        }
+    }
+
+    public RawModel(String name, VertexArrayObject vertexArrayObject, int verticesCount, int indicesCount) {
+        this(name, vertexArrayObject, verticesCount, indicesCount, true);
     }
 
     public void draw() {
@@ -45,6 +50,6 @@ public class RawModel implements IModel, ICleanable {
     @Override
     public void clean() {
         vertexArrayObject.clean();
-        MemoryManager.getModels().get(this.getClass()).remove(this);
+        MemoryManager.removeModelInstance(this);
     }
 }

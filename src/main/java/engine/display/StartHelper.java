@@ -35,7 +35,7 @@ public class StartHelper {
         GL.createCapabilities();
         GL40.glEnable(GL11.GL_DEPTH_TEST);
         GL40.glEnable(GL11.GL_CULL_FACE);
-        GLFW.glfwSetInputMode(pWindow, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+        //GLFW.glfwSetInputMode(pWindow, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
         GLFW.glfwShowWindow(pWindow);
     }
 

@@ -2,12 +2,10 @@ package engine.render;
 
 import engine.MemoryManager;
 import engine.Render;
-import engine.math.ITransformable;
-import engine.model.FontModel;
-import engine.model.IModel;
+import engine.model.CompositeModel;
+import engine.model.IDrawable;
 import engine.model.RawModel;
 import engine.model.TexturedModel;
-import engine.shader.ShaderProgram;
 import engine.shader.StaticShader;
 import engine.shader.UseShader;
 import lombok.Data;
@@ -28,16 +26,25 @@ public class StaticRender implements IRender {
 
     @Override
     public void render() {
-        List<IModel> models = new ArrayList<>();
+        List<IDrawable> models = new ArrayList<>();
         try {
-            models.addAll(MemoryManager.getModels().get(TexturedModel.class));
-            models.addAll(MemoryManager.getModels().get(RawModel.class));
+            if(MemoryManager.getModels().containsKey(TexturedModel.class)) {
+                models.addAll(MemoryManager.getModels().get(TexturedModel.class));
+            }
+            if(MemoryManager.getModels().containsKey(RawModel.class)) {
+                models.addAll(MemoryManager.getModels().get(RawModel.class));
+            }
+            if(MemoryManager.getModels().containsKey(CompositeModel.class)) {
+                models.addAll(MemoryManager.getModels().get(CompositeModel.class));
+            }
         } catch (Exception ignored) {}
         if(!models.isEmpty()) {
             models.forEach(model -> {
-                shaderProgram.applyTransformation(model);
-                Render.mainCamera.applyViewAndProjectionMatrices(shaderProgram);
-                model.draw();
+                if(model != null) {
+                    shaderProgram.applyTransformation(model);
+                    Render.mainCamera.applyViewAndProjectionMatrices(shaderProgram);
+                    model.draw();
+                }
             });
         }
     }

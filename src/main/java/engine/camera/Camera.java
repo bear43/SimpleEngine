@@ -118,7 +118,7 @@ public class Camera {
     }
 
     public void updateViewMatrix() {
-        viewMatrix.identity().lookAt(eye, center, up);
+        viewMatrix.identity().lookAt(eye, new Vector3f(eye).add(direction), up);
     }
 
     public Vector2f normalizedRelativeToWidthAndHeight(float x, float y) {

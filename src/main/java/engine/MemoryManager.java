@@ -4,6 +4,7 @@ import engine.buffer.ICleanable;
 import engine.buffer.VertexArrayObject;
 import engine.buffer.VertexBufferObject;
 import engine.model.FontModel;
+import engine.model.IDrawable;
 import engine.model.IModel;
 import engine.render.IRender;
 import engine.shader.ShaderProgram;
@@ -23,7 +24,7 @@ public class MemoryManager {
     private static List<VertexBufferObject> vertexBufferObjects = new ArrayList<>();
     private static List<Shader> shaders = new ArrayList<>();
     private static List<ShaderProgram> shaderPrograms = new ArrayList<>();
-    private static Map<Class, List<IModel>> models = new HashMap<>();
+    private static Map<Class, List<IDrawable>> models = new HashMap<>();
     private static List<Texture> textures = new ArrayList<>();
     private static List<Text> texts = new ArrayList<>();
     private static List<FontModel> fontModels = new ArrayList<>();
@@ -45,7 +46,7 @@ public class MemoryManager {
         return shaderPrograms;
     }
 
-    public static Map<Class, List<IModel>> getModels() {
+    public static Map<Class, List<IDrawable>> getModels() {
         return models;
     }
 
@@ -86,7 +87,17 @@ public class MemoryManager {
         }
     }
 
+    public static void removeModelInstance(IModel model) {
+        if(model != null) {
+            List<IDrawable> classModels = models.get(model.getClass());
+            if(classModels != null) {
+                classModels.remove(model);
+            }
+        }
+    }
+
     public static void clean() {
+        models.forEach((key, value) -> concurrentForEach(value));
         concurrentForEach(shaderPrograms);
         concurrentForEach(shaders);
         concurrentForEach(textures);

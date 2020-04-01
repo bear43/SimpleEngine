@@ -16,6 +16,17 @@ import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 public class TexturedModel extends RawModel {
     private Texture texture;
 
+    public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, ITextureSource textureSource, boolean register) {
+        super(name, vao, verticesCount, indicesCount, register);
+        texture = new Texture(textureSource);
+        texture.load();
+    }
+
+    public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, Texture texture, boolean register) {
+        super(name, vao, verticesCount, indicesCount, register);
+        this.texture = texture;
+        this.texture.load();
+    }
 
     public TexturedModel(String name, VertexArrayObject vao, int verticesCount, int indicesCount, ITextureSource textureSource) {
         super(name, vao, verticesCount, indicesCount);
